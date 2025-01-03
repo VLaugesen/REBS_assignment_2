@@ -40,8 +40,8 @@ class HierarchicalSemantics(ExtendedSemantics):
                 res.discard(e)
 
         for e in set(expanded_milestones.keys()).intersection(res):
-            if len(expanded_milestones[e].intersection(graph.marking.included.difference(
-                    graph.marking.executed))) > 0:
+            if len(expanded_milestones[e].intersection(
+                    graph.marking.included.intersection(graph.marking.pending))) > 0:
                 res.discard(e)
         return res
 
